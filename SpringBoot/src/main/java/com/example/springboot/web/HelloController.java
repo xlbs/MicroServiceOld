@@ -20,8 +20,8 @@ public class HelloController {
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String index(){
         ServiceInstance instance = client.getLocalServiceInstance();
-        logger.info("/hello,host:"+instance.getHost()+",service_id:"+instance.getServiceId());
-        return "Hello World";
+        logger.info("/hello   host:"+instance.getHost()+":"+instance.getPort()+",service_id:"+instance.getServiceId());
+        return "Hello World 萨瓦迪卡\n"+"/hello   host:"+instance.getHost()+":"+instance.getPort()+",service_id:"+instance.getServiceId();
     }
 
 
