@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/SpringBoot/pom.xml" />
         <option value="$PROJECT_DIR$/EurekaService/pom.xml" />
+        <option value="$PROJECT_DIR$/RibbonConsumer/pom.xml" />
       </list>
     </option>
   </component>
