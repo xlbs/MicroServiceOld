@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact name="EurekaService:jar">
-    <output-path>E:/ExecutableProgram/EurekaService</output-path>
+    <output-path>E:/ExecutableProgram/MicroService/EurekaService</output-path>
     <root id="root">
       <element id="archive" name="start.jar">
         <element id="module-output" name="EurekaService" />

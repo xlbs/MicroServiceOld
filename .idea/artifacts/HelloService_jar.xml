@@ -1,9 +1,9 @@
 <component name="ArtifactManager">
-  <artifact name="SpringBoot:jar">
-    <output-path>E:/ExecutableProgram/HelloService</output-path>
+  <artifact name="HelloService:jar">
+    <output-path>E:/ExecutableProgram/MicroService/HelloService</output-path>
     <root id="root">
       <element id="archive" name="start.jar">
-        <element id="module-output" name="SpringBoot" />
+        <element id="module-output" name="HelloService" />
       </element>
       <element id="library" level="project" name="Maven: com.netflix.governator:governator:1.12.10" />
       <element id="library" level="project" name="Maven: com.amazonaws:aws-java-sdk-autoscaling:1.11.18" />
