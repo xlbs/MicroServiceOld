@@ -6,16 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="DataOperatService" />
         <module name="EurekaService" />
-        <module name="HelloService" />
         <module name="RibbonConsumer" />
         <module name="SpringBoot" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="EurekaService" target="1.7" />
+      <module name="DataOperatService" target="1.8" />
+      <module name="EurekaService" target="1.8" />
       <module name="HelloService" target="1.7" />
-      <module name="RibbonConsumer" target="1.7" />
+      <module name="RibbonConsumer" target="1.8" />
       <module name="SpringBoot" target="1.7" />
     </bytecodeTargetLevel>
   </component>
