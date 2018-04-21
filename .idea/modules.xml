@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DataOperatService/DataOperatService.iml" filepath="$PROJECT_DIR$/DataOperatService/DataOperatService.iml" />
       <module fileurl="file://$PROJECT_DIR$/EurekaService/EurekaService.iml" filepath="$PROJECT_DIR$/EurekaService/EurekaService.iml" />
+	  <module fileurl="file://$PROJECT_DIR$/HelloService/HelloService.iml" filepath="$PROJECT_DIR$/HelloService/HelloService.iml" />
       <module fileurl="file://$PROJECT_DIR$/RibbonConsumer/RibbonConsumer.iml" filepath="$PROJECT_DIR$/RibbonConsumer/RibbonConsumer.iml" />
     </modules>
   </component>

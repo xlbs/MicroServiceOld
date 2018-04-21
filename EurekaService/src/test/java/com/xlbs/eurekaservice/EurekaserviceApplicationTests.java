@@ -8,8 +8,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = EurekaserviceApplication.class)
-@WebAppConfiguration//@RunWith(SpringRunner.class)
-//@
+@WebAppConfiguration
 public class EurekaserviceApplicationTests {
 
 	@Test
