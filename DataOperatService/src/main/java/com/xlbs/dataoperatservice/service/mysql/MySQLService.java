@@ -4,6 +4,7 @@ import com.xlbs.dataoperatservice.entity.SaveObj;
 import com.xlbs.dataoperatservice.mapper.mysql.MySQLMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -57,6 +58,22 @@ public class MySQLService {
      */
     public boolean executeSql(String sql){
         return mySQLMapper.executeSql(sql);
+    }
+
+
+    /**
+     * 事务控制
+     * @return
+     */
+    @Transactional
+    public List<Map> executeTrans(){
+        String sql = "INSERT INTO bs_user(USER_NAME,USER_PASSWORD) VALUES('dddddd','ffffff')";
+        SaveObj saveObj = new SaveObj(sql);
+        mySQLMapper.saveSql(saveObj);
+        sql = "INSERT INTO bs_user(USER_NAME,USER_PASSWORD) VALUES('dddddd')";
+        saveObj = new SaveObj(sql);
+        mySQLMapper.saveSql(saveObj);
+        return mySQLMapper.executeTrans();
     }
 
 

@@ -39,7 +39,6 @@ public class MySQLController {
         for(int i=0; i<affectCount;i++){
             result[i] = saveObj.getId()+i;
         }
-        System.out.println("----affectCount:"+affectCount);
         return result;
     }
 
@@ -79,6 +78,16 @@ public class MySQLController {
     @RequestMapping(value = "/executeSql", method={RequestMethod.GET, RequestMethod.POST})
     public boolean executeSql(String sql){
         return mySQLService.executeSql(sql);
+    }
+
+
+    /**
+     * 事务控制
+     * @return
+     */
+    @RequestMapping(value = "/executeTrans", method={RequestMethod.GET, RequestMethod.POST})
+    public List<Map> executeTrans(){
+        return mySQLService.executeTrans();
     }
 
 }

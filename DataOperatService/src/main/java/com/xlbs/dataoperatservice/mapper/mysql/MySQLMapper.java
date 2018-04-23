@@ -58,4 +58,11 @@ public interface MySQLMapper {
      */
     public boolean batchUpdateSql(@Param(value="sql") String sql);
 
+
+    /**
+     * 事务控制
+     * @return
+     */
+    public List<Map> executeTrans();
+
 }
