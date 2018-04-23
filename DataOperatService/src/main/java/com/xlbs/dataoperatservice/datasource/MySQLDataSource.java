@@ -42,15 +42,15 @@ public class MySQLDataSource {
 
     @Bean(name =DataSourceConstants.MYSQL_TX_MG)
     @Primary //必须指定一个默认数据源（主数据源）
-    public DataSourceTransactionManager initFtpTransactionManager(@Qualifier(DataSourceConstants.MYSQL_DATA_SOURCE) DataSource northDataSource) {
-        return new DataSourceTransactionManager(northDataSource);
+    public DataSourceTransactionManager initFtpTransactionManager(@Qualifier(DataSourceConstants.MYSQL_DATA_SOURCE) DataSource mysqlDataSource) {
+        return new DataSourceTransactionManager(mysqlDataSource);
     }
 
     @Bean(name = DataSourceConstants.MYSQL_SESSION_FACTORY)
     @Primary //必须指定一个默认数据源（主数据源）
-    public SqlSessionFactory initMmsSessionFactory(@Qualifier(DataSourceConstants.MYSQL_DATA_SOURCE) DataSource northDataSource) throws Exception {
+    public SqlSessionFactory initMmsSessionFactory(@Qualifier(DataSourceConstants.MYSQL_DATA_SOURCE) DataSource mysqlDataSource) throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(northDataSource);
+        sessionFactory.setDataSource(mysqlDataSource);
         //绑定mysql mybatis映射文件路径
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(DataSourceConstants.MYSQL_SCAN_MAPPER));
         return sessionFactory.getObject();

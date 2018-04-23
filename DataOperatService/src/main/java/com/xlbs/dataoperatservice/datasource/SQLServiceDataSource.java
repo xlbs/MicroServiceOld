@@ -39,14 +39,14 @@ public class SQLServiceDataSource {
     }
 
     @Bean(name =DataSourceConstants.SQLSERVICE_TX_MG)
-    public DataSourceTransactionManager initFtpTransactionManager(@Qualifier(DataSourceConstants.SQLSERVICE_DATA_SOURCE) DataSource southDataSource) {
-        return new DataSourceTransactionManager(southDataSource);
+    public DataSourceTransactionManager initFtpTransactionManager(@Qualifier(DataSourceConstants.SQLSERVICE_DATA_SOURCE) DataSource sqlServiceDataSource) {
+        return new DataSourceTransactionManager(sqlServiceDataSource);
     }
 
     @Bean(name = DataSourceConstants.SQLSERVICE_SESSION_FACTORY)
-    public SqlSessionFactory initMmsSessionFactory(@Qualifier(DataSourceConstants.SQLSERVICE_DATA_SOURCE) DataSource southDataSource) throws Exception {
+    public SqlSessionFactory initMmsSessionFactory(@Qualifier(DataSourceConstants.SQLSERVICE_DATA_SOURCE) DataSource sqlServiceDataSource) throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(southDataSource);
+        sessionFactory.setDataSource(sqlServiceDataSource);
         //绑定sqlservice mybatis映射文件路径
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(DataSourceConstants.SQLSERVICE_SCAN_MAPPER));
         return sessionFactory.getObject();
