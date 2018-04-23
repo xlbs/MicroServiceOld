@@ -4,9 +4,28 @@
 
 <mapper namespace="com.xlbs.dataoperatservice.mapper.mysql.MySQLMapper">
 
+    <!--查询，返回List<Map>-->
     <select id="querySql" parameterType="java.lang.String" resultType="java.util.Map">
          ${sql}
     </select>
+
+    <!--保存，返回主键-->
+    <insert id="saveSql" parameterType="com.xlbs.dataoperatservice.entity.SaveObj">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            select LAST_INSERT_ID()
+        </selectKey>
+        ${sql}
+    </insert>
+
+    <!--修改，返回受影响条数-->
+    <update id="updateSql" parameterType="java.lang.String" >
+        ${sql}
+    </update>
+
+    <!--删除，返回受影响条数-->
+    <delete id="deleteSql" parameterType="java.lang.String">
+        ${sql}
+    </delete>
 
 
 </mapper>
