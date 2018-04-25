@@ -43,7 +43,6 @@ public class MySQLController {
     @RequestMapping(value = "/updateSql", method={RequestMethod.GET, RequestMethod.POST})
     public boolean updateSql(String sql){
         return mySQLService.updateSql(sql);
-
     }
 
     /**
@@ -70,7 +69,7 @@ public class MySQLController {
 
     /**
      * 事务控制
-     * @param sqlList sql语句集合
+     * @param sqlList sql语句集合 JSON字符串(List<String>)
      * @return
      */
     @RequestMapping(value = "/executeTrans", method={RequestMethod.GET, RequestMethod.POST})

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -122,13 +121,17 @@ public class MySQLService {
         return null;
     }
 
-
+    /**
+     * 事务控制
+     * @param sqlList sql语句集合 JSON字符串(List<String>)
+     * @return
+     */
     @Transactional
     public boolean executeTrans(String sqlList){
         try {
             List<String> list = JSONUtils.deserialize(sqlList, new JSONUtils.ObjectToken<List<String>>(){});
             for (String sql : list){
-                sql = sql.trim();
+                sql = sql.trim();//去掉首尾的空格
                 String head = sql.substring(0,6);
                 if("SELECT".equals(head)||"select".equals(head)){
                     mySQLMapper.querySql(sql);

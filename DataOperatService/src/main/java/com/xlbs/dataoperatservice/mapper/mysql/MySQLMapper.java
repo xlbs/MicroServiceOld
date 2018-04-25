@@ -1,6 +1,5 @@
 package com.xlbs.dataoperatservice.mapper.mysql;
 
-
 import com.xlbs.dataoperatservice.entity.SaveObj;
 import org.apache.ibatis.annotations.Param;
 
