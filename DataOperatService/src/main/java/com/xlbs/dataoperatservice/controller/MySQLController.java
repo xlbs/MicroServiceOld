@@ -1,6 +1,5 @@
 package com.xlbs.dataoperatservice.controller;
 
-import com.xlbs.dataoperatservice.entity.SaveObj;
 import com.xlbs.dataoperatservice.service.mysql.MySQLService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,13 +32,7 @@ public class MySQLController {
      */
     @RequestMapping(value = "/saveSql", method={RequestMethod.GET, RequestMethod.POST})
     public Long[] saveSql(String sql){
-        SaveObj saveObj = new SaveObj(sql);
-        Integer affectCount = mySQLService.saveSql(saveObj);
-        Long[] result = new Long[affectCount];
-        for(int i=0; i<affectCount;i++){
-            result[i] = saveObj.getId()+i;
-        }
-        return result;
+        return mySQLService.saveSql(sql);
     }
 
     /**
@@ -49,11 +42,8 @@ public class MySQLController {
      */
     @RequestMapping(value = "/updateSql", method={RequestMethod.GET, RequestMethod.POST})
     public boolean updateSql(String sql){
-        Integer  affectCount = mySQLService.updateSql(sql);
-        if(affectCount<=0){
-            return false;
-        }
-        return true;
+        return mySQLService.updateSql(sql);
+
     }
 
     /**
@@ -63,31 +53,32 @@ public class MySQLController {
      */
     @RequestMapping(value = "/deleteSql", method={RequestMethod.GET, RequestMethod.POST})
     public boolean deleteSql(String sql){
-        Integer  affectCount = mySQLService.deleteSql(sql);
-        if(affectCount<=0){
-            return false;
-        }
-        return true;
+        return mySQLService.deleteSql(sql);
     }
 
     /**
-     * 执行
-     * @param sql SQL语句
+     * 批量保存
+     * @param tabName 表名
+     * @param fieldName 字段名 JSON字符串(Map<String,Object>)
+     * @param datelist 数据列表 JSON字符串(List<Map<String,Object>>)
      * @return
      */
-    @RequestMapping(value = "/executeSql", method={RequestMethod.GET, RequestMethod.POST})
-    public boolean executeSql(String sql){
-        return mySQLService.executeSql(sql);
+    @RequestMapping(value = "/batchSaveSql", method={RequestMethod.GET, RequestMethod.POST})
+    public Long[] batchSaveSql(String tabName, String fieldName, String datelist){
+        return mySQLService.batchSaveSql(tabName,fieldName,datelist);
     }
-
 
     /**
      * 事务控制
+     * @param sqlList sql语句集合
      * @return
      */
     @RequestMapping(value = "/executeTrans", method={RequestMethod.GET, RequestMethod.POST})
-    public List<Map> executeTrans(){
-        return mySQLService.executeTrans();
+    public boolean executeTrans(String sqlList){
+        return mySQLService.executeTrans(sqlList);
     }
+
+
+
 
 }

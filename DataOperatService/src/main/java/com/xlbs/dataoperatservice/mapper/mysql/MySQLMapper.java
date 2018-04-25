@@ -37,32 +37,6 @@ public interface MySQLMapper {
      */
     public Integer deleteSql(@Param(value="sql") String sql);
 
-    /**
-     * 执行
-     * @param sql SQL语句
-     * @return
-     */
-    public boolean executeSql(@Param(value="sql") String sql);
 
-    /**
-     * 批量保存
-     * @param sql SQL语句
-     * @return
-     */
-    public Integer[] batchSaveSql(@Param(value="sql") String sql);
-
-    /**
-     * 批量修改
-     * @param sql SQL语句
-     * @return
-     */
-    public boolean batchUpdateSql(@Param(value="sql") String sql);
-
-
-    /**
-     * 事务控制
-     * @return
-     */
-    public List<Map> executeTrans();
 
 }
