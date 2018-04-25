@@ -2,9 +2,7 @@ package com.xlbs.dataoperatservice.controller;
 
 import com.xlbs.dataoperatservice.service.mysql.MySQLService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -21,7 +19,7 @@ public class MySQLController {
      * @return
      */
     @RequestMapping(value = "/querySql", method={RequestMethod.GET, RequestMethod.POST})
-    public List<Map> querySql(String sql){
+    public List<Map> querySql(@RequestParam String sql){
         return mySQLService.querySql(sql);
     }
 
@@ -31,7 +29,7 @@ public class MySQLController {
      * @return
      */
     @RequestMapping(value = "/saveSql", method={RequestMethod.GET, RequestMethod.POST})
-    public Long[] saveSql(String sql){
+    public Long[] saveSql(@RequestParam String sql){
         return mySQLService.saveSql(sql);
     }
 
@@ -41,7 +39,7 @@ public class MySQLController {
      * @return
      */
     @RequestMapping(value = "/updateSql", method={RequestMethod.GET, RequestMethod.POST})
-    public boolean updateSql(String sql){
+    public boolean updateSql(@RequestParam String sql){
         return mySQLService.updateSql(sql);
     }
 
@@ -51,7 +49,7 @@ public class MySQLController {
      * @return
      */
     @RequestMapping(value = "/deleteSql", method={RequestMethod.GET, RequestMethod.POST})
-    public boolean deleteSql(String sql){
+    public boolean deleteSql(@RequestParam String sql){
         return mySQLService.deleteSql(sql);
     }
 
@@ -63,7 +61,7 @@ public class MySQLController {
      * @return
      */
     @RequestMapping(value = "/batchSaveSql", method={RequestMethod.GET, RequestMethod.POST})
-    public Long[] batchSaveSql(String tabName, String fieldName, String datelist){
+    public Long[] batchSaveSql(@RequestParam String tabName, @RequestParam String fieldName, @RequestParam String datelist){
         return mySQLService.batchSaveSql(tabName,fieldName,datelist);
     }
 
@@ -72,8 +70,8 @@ public class MySQLController {
      * @param sqlList sql语句集合 JSON字符串(List<String>)
      * @return
      */
-    @RequestMapping(value = "/executeTrans", method={RequestMethod.GET, RequestMethod.POST})
-    public boolean executeTrans(String sqlList){
+    @RequestMapping(value = "/executeTrans", method={RequestMethod.POST})
+    public boolean executeTrans(@RequestBody String sqlList){
         return mySQLService.executeTrans(sqlList);
     }
 
