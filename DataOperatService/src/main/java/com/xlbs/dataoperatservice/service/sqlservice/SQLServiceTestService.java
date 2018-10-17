@@ -7,16 +7,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
-@Service
+//@Service
 public class SQLServiceTestService {
 
-    @Autowired
-    private SQLServiceTestMapper sqlServiceTestMapper;
-
-
-    public List<Map<String, Object>> getSQLServiceData(){
-        return sqlServiceTestMapper.getSQLServiceData();
-    }
+//    @Autowired
+//    private SQLServiceTestMapper sqlServiceTestMapper;
+//
+//
+//    public List<Map<String, Object>> getSQLServiceData(){
+//        return sqlServiceTestMapper.getSQLServiceData();
+//    }
 
 
 

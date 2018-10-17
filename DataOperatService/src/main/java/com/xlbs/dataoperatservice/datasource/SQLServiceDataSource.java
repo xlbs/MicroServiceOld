@@ -13,42 +13,45 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
-@Configuration
+//@Configuration
 //扫描sqlservice mapper接口包名
-@MapperScan(basePackages = DataSourceConstants.SQLSERVICE_SCAN_PACKAGE, sqlSessionFactoryRef = DataSourceConstants.SQLSERVICE_SESSION_FACTORY)
+//@MapperScan(basePackages = DataSourceConstants.SQLSERVICE_SCAN_PACKAGE, sqlSessionFactoryRef = DataSourceConstants.SQLSERVICE_SESSION_FACTORY)
 /**
  * 采用阿里druid连接池
  */
 public class SQLServiceDataSource {
 
-    @Value("${sqlservice.datasource.url}")
-    private String dbUrl;
-    @Value("${sqlservice.datasource.username}")
-    private String dbUser;
-    @Value("${sqlservice.datasource.password}")
-    private String dbPassword;
-    
-    @Qualifier(DataSourceConstants.SQLSERVICE_DATA_SOURCE)
-    @Bean(name = DataSourceConstants.SQLSERVICE_DATA_SOURCE)
-    public DataSource initMmsDataSource() {
-    	DruidDataSource dataSource = new DruidDataSource();
-    	dataSource.setUrl(dbUrl);
-        dataSource.setUsername(dbUser);
-        dataSource.setPassword(dbPassword);
-        return dataSource;
-    }
+//    @Value("${sqlservice.datasource.url}")
+//    private String dbUrl;
+//
+//    @Value("${sqlservice.datasource.username}")
+//    private String dbUser;
+//
+//    @Value("${sqlservice.datasource.password}")
+//    private String dbPassword;
+//
+//    @Qualifier(DataSourceConstants.SQLSERVICE_DATA_SOURCE)
+//    @Bean(name = DataSourceConstants.SQLSERVICE_DATA_SOURCE)
+//    public DataSource initMmsDataSource() {
+//    	DruidDataSource dataSource = new DruidDataSource();
+//    	dataSource.setUrl(dbUrl);
+//        dataSource.setUsername(dbUser);
+//        dataSource.setPassword(dbPassword);
+//        return dataSource;
+//    }
+//
+//    @Bean(name =DataSourceConstants.SQLSERVICE_TX_MG)
+//    public DataSourceTransactionManager initFtpTransactionManager(@Qualifier(DataSourceConstants.SQLSERVICE_DATA_SOURCE) DataSource sqlServiceDataSource) {
+//        return new DataSourceTransactionManager(sqlServiceDataSource);
+//    }
+//
+//    @Bean(name = DataSourceConstants.SQLSERVICE_SESSION_FACTORY)
+//    public SqlSessionFactory initMmsSessionFactory(@Qualifier(DataSourceConstants.SQLSERVICE_DATA_SOURCE) DataSource sqlServiceDataSource) throws Exception {
+//        final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
+//        sessionFactory.setDataSource(sqlServiceDataSource);
+//        //绑定sqlservice mybatis映射文件路径
+//        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(DataSourceConstants.SQLSERVICE_SCAN_MAPPER));
+//        return sessionFactory.getObject();
+//    }
 
-    @Bean(name =DataSourceConstants.SQLSERVICE_TX_MG)
-    public DataSourceTransactionManager initFtpTransactionManager(@Qualifier(DataSourceConstants.SQLSERVICE_DATA_SOURCE) DataSource sqlServiceDataSource) {
-        return new DataSourceTransactionManager(sqlServiceDataSource);
-    }
-
-    @Bean(name = DataSourceConstants.SQLSERVICE_SESSION_FACTORY)
-    public SqlSessionFactory initMmsSessionFactory(@Qualifier(DataSourceConstants.SQLSERVICE_DATA_SOURCE) DataSource sqlServiceDataSource) throws Exception {
-        final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(sqlServiceDataSource);
-        //绑定sqlservice mybatis映射文件路径
-        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(DataSourceConstants.SQLSERVICE_SCAN_MAPPER));
-        return sessionFactory.getObject();
-    }
 }

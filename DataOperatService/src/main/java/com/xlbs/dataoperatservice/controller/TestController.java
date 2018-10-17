@@ -17,8 +17,8 @@ public class TestController {
     @Autowired
     private MySQLTestService mySQLTestService;
 
-    @Autowired
-    private SQLServiceTestService sqlServiceTestService;
+//    @Autowired
+//    private SQLServiceTestService sqlServiceTestService;
 
     @RequestMapping(value = "/helloworld")
     @ResponseBody
@@ -32,11 +32,11 @@ public class TestController {
         return mySQLTestService.getMySQLData();
     }
 
-    @RequestMapping(value = "/sqlservice")
-    @ResponseBody
-    public List<Map<String, Object>> sqlServiceData(){
-        return sqlServiceTestService.getSQLServiceData();
-    }
+//    @RequestMapping(value = "/sqlservice")
+//    @ResponseBody
+//    public List<Map<String, Object>> sqlServiceData(){
+//        return sqlServiceTestService.getSQLServiceData();
+//    }
 
 
 }

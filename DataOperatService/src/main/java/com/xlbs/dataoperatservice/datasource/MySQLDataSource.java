@@ -24,8 +24,10 @@ public class MySQLDataSource {
 
     @Value("${mysql.datasource.url}")
     private String dbUrl;
+
     @Value("${mysql.datasource.username}")
     private String dbUser;
+
     @Value("${mysql.datasource.password}")
     private String dbPassword;
     
